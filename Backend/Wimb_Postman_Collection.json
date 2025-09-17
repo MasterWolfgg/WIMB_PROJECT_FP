@@ -1,0 +1,138 @@
+{
+  "info": {
+    "name": "WIMB Backend API",
+    "_postman_id": "wimb-backend-collection",
+    "description": "Postman collection for Where Is My Bus (WIMB) backend APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Driver - Register",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John Doe\",\n  \"phone\": \"9876543210\",\n  \"password\": \"mySecret123\",\n  \"lisenceNo\": \"DL-12345\",\n  \"qrCodeId\": \"QR123\",\n  \"role\": \"driver\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/driver/register",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "driver", "register"]
+        }
+      }
+    },
+    {
+      "name": "Driver - Login",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"phone\": \"9876543210\",\n  \"password\": \"mySecret123\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/driver/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "driver", "login"]
+        }
+      }
+    },
+    {
+      "name": "Bus - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"busNo\": \"WB-12-3456\",\n  \"capacity\": 50\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/buses",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "buses"]
+        }
+      }
+    },
+    {
+      "name": "Route - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"College Route 1\",\n  \"startPoint\": \"Main Campus\",\n  \"endPoint\": \"City Center\",\n  \"stops\": [\"Stop A\", \"Stop B\", \"Stop C\"],\n  \"distance\": 12.5,\n  \"estimatedTime\": \"30 mins\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/routes",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "routes"]
+        }
+      }
+    },
+    {
+      "name": "Assignment - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"bus\": \"<busId>\",\n  \"driver\": \"<driverId>\",\n  \"route\": \"<routeId>\",\n  \"startTime\": \"2025-09-17T10:00:00Z\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/assignments",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "assignments"]
+        }
+      }
+    },
+    {
+      "name": "Assignment - End",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/assignments/{{assignmentId}}/end",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "assignments", "{{assignmentId}}", "end"]
+        }
+      }
+    },
+    {
+      "name": "LocationLog - Create (Driver GPS Update)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"assignment\": \"<assignmentId>\",\n  \"lat\": 22.5726,\n  \"lon\": 88.3639,\n  \"speed\": 40\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/locationlogs",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "locationlogs"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:4000" },
+    { "key": "token", "value": "" },
+    { "key": "assignmentId", "value": "" }
+  ]
+}

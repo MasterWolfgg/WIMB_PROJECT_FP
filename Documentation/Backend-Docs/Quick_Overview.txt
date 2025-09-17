@@ -1,0 +1,25 @@
+Quick overview — what we’ll build first
+
+A Node.js + Express REST API + Socket.IO server
+
+MongoDB (Mongoose) data models: Driver, Bus, Route, Assignment, LocationLog, User, Admin
+
+JWT authentication for drivers/admins
+
+Socket.IO flow: authenticated driver emits location updates → server stores & broadcasts to clients
+
+Small dummy front-end pages (static HTML/JS) to simulate driver and passenger behavior
+
+Dev tooling: nodemon, Postman / curl tests, Docker setup for easy delivery
+
+
+Prerequisites (install needed)
+
+Node.js (>=16), npm
+
+MongoDB (local or use MongoDB Atlas)
+
+VS Code 
+
+Postman (or use curl)
+

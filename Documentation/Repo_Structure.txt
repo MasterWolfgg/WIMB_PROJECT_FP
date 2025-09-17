@@ -1,0 +1,19 @@
+WIMB_PROJECT_FP/
+├── Documentation/
+├── Backend/
+|   ├──Readme.md
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   ├── socket/
+│   │   ├── utils/
+│   │   └── app.js
+│   ├── seed/
+│   ├── .env.example
+│   ├── package.json
+│   └── Dockerfile
+├── Frontend/
+│   
+└── README.md
